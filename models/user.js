@@ -8,18 +8,18 @@ const userSchema = new mongoose.Schema({
         type: Date
     },
     tel:	{
-        type: Number
+        type: String
     },
-    tweet_id:  {
+    tweets:  {
         type: Array
     },
-    comments_id:  {
+    comments:  {
         type: Array
     },
-    followers_id:  {
+    followers:  {
         type: Array
     },
-    following_id:  {
+    followings:  {
         type: Array
     }
 }, {
