@@ -5,6 +5,8 @@ const app = express()
 const Comment = require("../models/Comment")
 const User = require("../models/User")
 
+//---Route qui récupère les commentaires---
+
 app.get('/', async (req, res) => {
     try {
         const comments = await Comment.find().exec()
@@ -35,7 +37,6 @@ app.post('/',
             const comment = new Comment({ ...req.body})
             
             const commentInsered = await comment.save()
-                console.log(user_id)
             const getUser = await User.findById(user_id)
             if (getUser) {
                 getUser.comments.push(commentInsered._id)
