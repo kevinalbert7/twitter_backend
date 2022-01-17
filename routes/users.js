@@ -28,7 +28,7 @@ app.post('/', async (req,res) => {
 
 
 
-//----Route d'utilisateur par son id---
+//----Route qui renvoir un utilisateur grâce à son id---
 
 app.get('/:id', async (req, res) => {
     const { id } = req.params

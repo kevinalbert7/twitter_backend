@@ -1,4 +1,5 @@
-{
+[
+    {
     "name": "Ahmed",
     "birth": "14.03.1994",
     "tel": "0102030405",
@@ -6,4 +7,11 @@
     "comments_id": "",
     "followers_id": "",
     "followings_id": ""
-}
+    },
+    {
+        "user_id": "61e30a4e66583b5fee9e364c",
+        "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+    }
+]
+
+

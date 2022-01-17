@@ -13,18 +13,26 @@ const userSchema = new mongoose.Schema({
     tel:	{
         type: String
     },
-    tweets:  {
-        type: Array
-    },
-    comments:  {
-        type: Array
-    },
-    followers:  {
-        type: Array
-    },
-    followings:  {
-        type: Array
-    }
+    tweets:  [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: "Tweet"
+        }
+    ],
+    comments:  [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: "Comment"
+        }
+    ],
+    followers:  [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: "User"
+        }
+    ],
+    followings:  [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: "User"
+        }
+    ],
 }, {
     timestamps: true
 }) 

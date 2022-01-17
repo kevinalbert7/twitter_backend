@@ -7,9 +7,11 @@ const userSchema = new mongoose.Schema({
     user_id:    {
         type: String
     },
-    users_id:   {
-        type: Array
-    },
+    comments_id:   [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: "Comment"
+        }
+    ],
     retweets:   {
         type: Array
     }
