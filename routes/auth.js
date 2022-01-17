@@ -20,6 +20,20 @@ app.post('/login', passport.authenticate("local"), (req, res) => {
     }
 })
 
+// app.post('/login', passport.authenticate("local"),
+//     async (req, res) => {
+//         if (req.user) {
+//             req.logIn(req.user, err => {
+//                 if (err) {
+//                     console.log(err)
+//                 } else {
+//                     res.json(req.user)
+//                 }
+//             })
+//         }   
+//     }
+// )
+
 //---Route du logout---
 
 app.delete('/logout', (req, res) => {
