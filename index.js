@@ -4,6 +4,7 @@ const port = 5000
 const { dbConnect } = require("./config/db")
 const session = require("express-session")
 const passport = require("./config/passport")
+const cors = require("cors")
 const { body, validationResult } = require("express-validator")
 
 const authRoutes = require("./routes/auth")
@@ -11,6 +12,11 @@ const adminRoutes = require("./routes/admin")
 const usersRoutes = require("./routes/users")
 const tweetsRoutes = require("./routes/tweets")
 const commentsRoutes = require("./routes/comments")
+
+app.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true
+}))
 
 app.use(express.json())
 dbConnect()

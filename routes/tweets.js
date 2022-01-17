@@ -48,22 +48,8 @@ app.post('/',
         } catch (err) {
             console.log(err)
             res.status(500).json({ error: err })
-        }
-             
+        }     
     }
 )
         
-        // user.save(async  (err, user) => {
-        //     if (tweet) {
-        //         const getUser = await User.findByID(user)
-        //         getUser.tweets.push(tweet_id)
-        //         getUser.save()
-
-        //         res.json(tweet)
-        //         return
-        //     }
-
-        //     console.log(err)
-        //     res.status(500).json({ error:err })
-        // })
 module.exports = app
