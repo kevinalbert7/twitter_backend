@@ -26,7 +26,7 @@ app.delete('/logout', (req, res) => {
 
 //---Route du signup---
 
-app.post('/', (req, res) => {
+app.post('/signup', (req, res) => {
     const { username, email } = req.body
 
     let user = users.find(user => (

@@ -2,6 +2,8 @@ const express = require("express")
 const app = express()
 const User = require('../models/User')
 
+//---Route qui récupère tous les utilisateurs---
+
 app.get('/', async (req, res) => {
     try {
         const users = await User.find().exec()

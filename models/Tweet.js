@@ -5,7 +5,7 @@ const TweetSchema = new mongoose.Schema({
         type: String
     },
     user_id:    {
-        type: String
+        type: mongoose.Schema.Types.ObjectId, ref: "User"
     },
     comments_id:   [
         {

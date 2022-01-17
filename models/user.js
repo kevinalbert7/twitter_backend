@@ -13,6 +13,9 @@ const UserSchema = new mongoose.Schema({
     tel:	{
         type: String
     },
+    email:   {
+        type: String
+    },
     tweets:  [
         {
             type: mongoose.Schema.Types.ObjectId, ref: "Tweet"

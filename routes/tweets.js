@@ -35,7 +35,7 @@ app.post('/',
 
         try {
             const tweet = new Tweet({ ...req.body})
-
+                console.log(user_id)
             const tweetInsered = await tweet.save()
             const getUser = await User.findById(user_id)
             if (getUser) {
