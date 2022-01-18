@@ -1,29 +1,33 @@
+const { json } = require("express/lib/response")
 const passport = require("passport")
 const passportLocal = require("passport-local")
 
 const LocalStrategy = passportLocal.Strategy
 
-// const users = require("../users.json")
+const User = require("../models/User")
 
-passport.use(new LocalStrategy((username, password, done) => {
-    console.log("je suis dans ma strategy locl")
-    console.log(username)
-    console.log(password)
-    const user = users.find( user.username === username && user.password === password)
+passport.use(new LocalStrategy( async (username, password, done) => {
 
-    if (!user) {
+    try{
+        const user = await User.findOne({ username, password }).exec()
+    
+        if (!user) {
+            return done(null, false)
+        }
+    
+        return done(null, user)
+
+    } catch (err) {
         return done(null, false)
     }
-
-    return done(null, user)
 }))
 
 passport.serializeUser((user, done) => {
-    done(null, user.id)
+    done(null, user._id)
 })
 
-passport.deserializeUser((id, done) => {
-    const user = users.find(user => user.id ===id)
+passport.deserializeUser(async (id, done) => {
+    const user = await User.findById(id).exec()
     done(null, user)
 })
 
