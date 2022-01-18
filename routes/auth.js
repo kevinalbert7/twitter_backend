@@ -61,20 +61,3 @@ app.post('/signup',
 })
 
 module.exports = app
-
-// try {
-//     const comment = new Comment({ ...req.body})
-    
-//     const commentInsered = await comment.save()
-//     const getUser = await User.findById(user_id)
-//     if (getUser) {
-//         getUser.comments.push(commentInsered._id)
-//         await getUser.save()
-//     }
-
-//     res.json(commentInsered)
-
-// } catch (err) {
-//     console.log(err)
-//     res.status(500).json({ error: err })
-// }

@@ -52,4 +52,30 @@ app.post('/',
     }
 )
 
+//---Route qui récupère un commentaire par son id---
+
+app.get('/:id', async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const comment = await Comment.findById(id).exec()
+        res.json(comment)
+    } catch (err) {
+        res.status(500).json({ error: err })
+    }
+})
+
+//---Route pour supprimer un tweet---
+
+app.delete('/:id', async (req, res) => {
+    const { id } = req.params
+    
+    try {
+        const commentDeleted = await Comment.deleteOne({ _id: id }).exec()
+        res.json(commentDeleted)
+    } catch (err) {
+        res.status(500).json({ error: err })
+    }
+})
+
 module.exports = app

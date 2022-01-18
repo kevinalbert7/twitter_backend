@@ -3,6 +3,8 @@ const app = express()
 const multer = require("multer")
 const moment = require("moment")
 
+const { verifyUser } = require("../middlewares/auth")
+
 const User = require('../models/User')
 
 const upload = multer({ dest: 'public' })
@@ -34,7 +36,6 @@ app.get('/:id', async (req, res) => {
 //---Route d'upload profilePicture---
 
 app.post('/:id', upload.single('profilePicture'), (req, res) => {
-    const { id } = req.params
     console.log(req.file)
     const { 
         path,
@@ -49,4 +50,21 @@ app.post('/:id', upload.single('profilePicture'), (req, res) => {
     fs.renameSync(path, `${destination}/${originalname}`)
 })
 
+//---Route qui modifie le profil d'un utilisateur
+
+app.put('/:id', verifyUser, 
+    async (req, res) => {
+    const { id } = req.params
+    try {
+        const userUpdate = await Tweet.findById(id).exec()
+        userUpdate = { userUpdate, ...req.body }
+
+        res.json(userUpdate)
+    } catch (err) {
+        res.status(500).json({ error: err })
+    }
+})
+
 module.exports = app
+
+// 

@@ -51,5 +51,32 @@ app.post('/',
         }     
     }
 )
-        
+
+//---Route qui récupère un tweet par son id---
+
+app.get('/:id', async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const tweetId = await Tweet.findById(id).exec()
+        res.json(tweetId)
+    } catch (err) {
+        res.status(500).json({ error: err })
+    }
+})
+
+//---Route pour supprimer un tweet---
+
+app.delete('/:id', async (req, res) => {
+    const { id } = req.params
+    
+    try {
+        const tweetDeleted = await Tweet.deleteOne({ _id: id }).exec()
+        res.json(tweetDeleted)
+    } catch (err) {
+        res.status(500).json({ error: err })
+    }
+})
+
+
 module.exports = app
